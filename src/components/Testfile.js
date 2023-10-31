@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const Testfile = () => {
   const [text1, setText1] = useState('');
@@ -6,8 +6,19 @@ const Testfile = () => {
   const [result, setResult] = useState('');
   const [apiResult, setApiResult] = useState([]);
 
+  const inputOne = useRef();
+  const inputTwo = useRef(0);
+  const renderCounter = useRef(0);
+
+  useEffect(() => {
+    renderCounter.current = renderCounter.current + 1;
+    inputTwo.current = text2;
+  }, [text1, text2]);
+
   const handleSubmit = () => {
     setResult(<p>{`${text1} is ${text2} years old`}</p>);
+    console.log(inputOne.current);
+    inputOne.current.focus();
     return;
   };
   const handleAPI = async () => {
@@ -21,6 +32,7 @@ const Testfile = () => {
   return (
     <div>
       <input
+        ref={inputOne}
         type='text'
         value={text1}
         onChange={(e) => setText1(e.target.value)}
@@ -35,6 +47,11 @@ const Testfile = () => {
       <button onClick={handleSubmit}>Submit</button>
       {result}
       <button onClick={handleAPI}>Get API result</button>
+      <p>Rendering {renderCounter.current} time</p>
+      <p>
+        The current value is {text2}, but the previous value is
+        {inputTwo.current}
+      </p>
     </div>
   );
 };
