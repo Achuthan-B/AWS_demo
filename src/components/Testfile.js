@@ -31,7 +31,10 @@ const Testfile = () => {
   };
   return (
     <div style={{ margin: 'auto', width: '50vw' }}>
-      <h1>Welcome to DEMO app</h1>
+      <h1>
+        Welcome to DEMO app. Used this React app for Hosting in AWS EC2
+        instance.
+      </h1>
       <input
         ref={inputOne}
         type='text'
