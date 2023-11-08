@@ -30,7 +30,8 @@ const Testfile = () => {
       });
   };
   return (
-    <div>
+    <div style={{ margin: 'auto', width: '50vw' }}>
+      <h1>Welcome to DEMO app</h1>
       <input
         ref={inputOne}
         type='text'
