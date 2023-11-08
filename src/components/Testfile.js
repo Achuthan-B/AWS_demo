@@ -23,7 +23,7 @@ const Testfile = () => {
   };
   const handleAPI = async () => {
     await fetch(`https://jsonplaceholder.typicode.com/users`)
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setApiResult(data);
